@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuotationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/admin', [QuotationController::class, 'admin'])->name('quotation.admin');
+Route::get('/quotation/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotation.edit');
+Route::post('/quotation/{quotation}/update', [QuotationController::class, 'update'])->name('quotation.update');
