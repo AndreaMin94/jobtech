@@ -4,13 +4,13 @@ namespace App\Repositories;
 
 use App\Models\Quotation;
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\QuotationRepositoryInterface;
 
-Class QuotationRepository {
+Class QuotationRepository implements QuotationRepositoryInterface {
 
     public function index()
     {
-       return Quotation::orderBy('id', 'desc')->paginate(5);
-       
+       return Quotation::orderBy('id', 'desc')->paginate(5); 
     }
 
     public function findById($id)

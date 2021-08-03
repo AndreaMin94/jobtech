@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Quotation;
 use Illuminate\Http\Request;
-use App\Repositories\QuotationRepository;
+use App\Repositories\Interfaces\QuotationRepositoryInterface;
 
 class QuotationController extends Controller
 {
     private $repository;
 
-    public function __construct(QuotationRepository $repository)
+    public function __construct(QuotationRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
