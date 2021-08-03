@@ -9,5 +9,5 @@ class Quotation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer', 'amount', 'notes'];
+    protected $fillable = ['customer', 'total', 'notes'];
 }

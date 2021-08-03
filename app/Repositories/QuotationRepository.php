@@ -23,4 +23,18 @@ Class QuotationRepository {
         $quotation->update($req->all());
         return $quotation;
     }
+
+    public function delete(Quotation $quotation)
+    {
+        $quotation->delete();
+    }
+
+    public function store(Request $req)
+    {
+        return Quotation::create([
+            'customer' => $req->input('customer'),
+            'total' => $req->input('total'),
+            'notes' => $req->input('notes')
+        ]);
+    }
 }

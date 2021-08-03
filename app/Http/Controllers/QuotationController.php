@@ -33,4 +33,16 @@ class QuotationController extends Controller
         return redirect()->route('quotation.edit', compact('quotation'))->with('message', 'Quotation updated succesfully');
     }
 
+    public function delete(Quotation $quotation)
+    {
+        $this->repository->delete($quotation);
+        return redirect()->route('quotation.admin')->with('message', "The quotation with ID $quotation->id has been deleted");
+    }
+
+    public function store(Request $req)
+    {
+        $quotation = $this->repository->store($req);
+        return redirect()->route('quotation.admin')->with('message', "A new quotation has been created");
+    }
+
 }
