@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quotation;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuotationRequest;
 use App\Repositories\Interfaces\QuotationRepositoryInterface;
 
 class QuotationController extends Controller
@@ -27,7 +28,7 @@ class QuotationController extends Controller
         return view('quotation.edit', compact('quotation'));
     }
 
-    public function update(Request $req, Quotation $quotation)
+    public function update(QuotationRequest $req, Quotation $quotation)
     {
         $quotation = $this->repository->update($req, $quotation);
         return redirect()->route('quotation.edit', compact('quotation'))->with('message', 'Quotation updated succesfully');
@@ -39,7 +40,7 @@ class QuotationController extends Controller
         return redirect()->route('quotation.admin')->with('message', "The quotation with ID $quotation->id has been deleted");
     }
 
-    public function store(Request $req)
+    public function store(QuotationRequest $req)
     {
         $quotation = $this->repository->store($req);
         return redirect()->route('quotation.admin')->with('message', "A new quotation has been created");

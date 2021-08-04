@@ -32,23 +32,7 @@
 
         <div class="row">
             <div class="col-12">
-                <form method="POST" action="{{ route('quotation.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label>Customer Name</label>
-                        <input type="text" name="customer" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <label>Total</label>
-                        <input type="number" name="total" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Notes</label>
-                        <textarea class="form-control" name="notes"></textarea>
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary my-2">Submit</button>
-              </form>
+               <x-createform />
             </div>
         </div>
     </div>
