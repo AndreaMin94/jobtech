@@ -15,9 +15,6 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('quotation.admin') }}">Admin</a>
-              </li>
             @guest
             @if (Route::has('login'))
                 <li class="nav-item">
@@ -31,6 +28,11 @@
                 </li>
             @endif
             @else
+                @if (Auth::user() && Auth::user()->isAdmin())
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('quotation.admin') }}">Admin</a>
+                </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
