@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\QuotationController;
 
 /*
@@ -21,8 +22,10 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [QuotationController::class, 'admin'])->name('quotation.admin');
-Route::get('/quotation/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotation.edit');
-Route::post('/quotation/{quotation}/update', [QuotationController::class, 'update'])->name('quotation.update');
-Route::delete('/quotation/{quotation}/delete', [QuotationController::class, 'delete'])->name('quotation.delete');
-Route::post('/quotation/store', [QuotationController::class, 'store'])->name('quotation.store');
+Route::middleware([AdminMiddleware::class])->group(function() {
+    Route::get('/admin', [QuotationController::class, 'admin'])->name('quotation.admin');
+    Route::get('/quotation/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotation.edit');
+    Route::post('/quotation/{quotation}/update', [QuotationController::class, 'update'])->name('quotation.update');
+    Route::delete('/quotation/{quotation}/delete', [QuotationController::class, 'delete'])->name('quotation.delete');
+    Route::post('/quotation/store', [QuotationController::class, 'store'])->name('quotation.store');
+});
