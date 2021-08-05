@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Quotation;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuotationRequest;
 use App\Repositories\Interfaces\QuotationRepositoryInterface;
 
 Class QuotationRepository implements QuotationRepositoryInterface {
@@ -18,9 +19,9 @@ Class QuotationRepository implements QuotationRepositoryInterface {
         return Quotation::find($id);
     }
 
-    public function update(Request $req, Quotation $quotation)
+    public function update($params, Quotation $quotation)
     {
-        $quotation->update($req->all());
+        $quotation->update($params);
         return $quotation;
     }
 
@@ -29,12 +30,12 @@ Class QuotationRepository implements QuotationRepositoryInterface {
         $quotation->delete();
     }
 
-    public function store(Request $req)
+    public function store($params)
     {
-        return Quotation::create([
-            'customer' => $req->input('customer'),
-            'total' => $req->input('total'),
-            'notes' => $req->input('notes')
-        ]);
+        // return Quotation::create([
+        //     'customer' => $req->input('customer'),
+        //     'total' => $req->input('total'),
+        //     'notes' => $req->input('notes')
+        // ]);
     }
 }

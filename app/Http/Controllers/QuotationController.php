@@ -28,9 +28,9 @@ class QuotationController extends Controller
         return view('quotation.edit', compact('quotation'));
     }
 
-    public function update(QuotationRequest $req, Quotation $quotation)
+    public function update($params, Quotation $quotation)
     {
-        $quotation = $this->repository->update($req, $quotation);
+        $quotation = $this->repository->update($params, $quotation);
         return redirect()->route('quotation.edit', compact('quotation'))->with('message', 'Quotation updated succesfully');
     }
 
@@ -40,9 +40,9 @@ class QuotationController extends Controller
         return redirect()->route('quotation.admin')->with('message', "The quotation with ID $quotation->id has been deleted");
     }
 
-    public function store(QuotationRequest $req)
+    public function store($params)
     {
-        $quotation = $this->repository->store($req);
+        $quotation = $this->repository->store($params);
         return redirect()->route('quotation.admin')->with('message', "A new quotation has been created");
     }
 
