@@ -29,10 +29,7 @@
             @yield('content')
         </main>
     </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 027a750d545013ea280d74aacc66977199e7845c
     @livewireScripts
 </body>
 </html>

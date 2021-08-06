@@ -2,5 +2,5 @@
 
 @section('content')
 
-    @livewire('admin-page', ['quotations' => App\Models\Quotation::paginate(5)])
+    @livewire('admin-page')
 @endsection
