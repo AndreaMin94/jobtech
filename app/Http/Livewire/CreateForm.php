@@ -3,12 +3,17 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Quotation;
 
 class CreateForm extends Component
 {
     public $customer;
     public $total;
     public $notes;
+
+    public $inCreateMode = true;
+
+    public $quotation;
 
     protected $rules = [
         'customer' => 'required|min:3',
@@ -27,7 +32,7 @@ class CreateForm extends Component
     ];
 
     protected $listeners = [
-        'cleanCreateForm'
+        'cleanCreateForm', 'onEditModeEnter', 
     ];
 
     public function cleanCreateForm()
@@ -35,6 +40,15 @@ class CreateForm extends Component
        $this->customer = '';
        $this->total = null;
        $this->notes = '';
+    }
+
+    public function onEditModeEnter(Quotation $quotation)
+    {
+        $this->inCreateMode = false;
+        $this->quotation = $quotation;
+        $this->customer = $quotation->customer;
+        $this->total = $quotation->total;
+        $this->notes = $quotation->notes;
     }
 
     public function updatedCustomer()
@@ -55,12 +69,26 @@ class CreateForm extends Component
     public function create()
     {
         $this->validate();
-
-        $this->emitUp('store',[
-            'customer' => $this->customer,
-            'total' => $this->total,
-            'notes' => $this->notes,
-        ]);
+        if($this->inCreateMode){
+            $this->emitUp('store',[
+                'customer' => $this->customer,
+                'total' => $this->total,
+                'notes' => $this->notes,
+            ]);
+        } else {
+            $params = [
+                'customer' => $this->customer,
+                'total' => $this->total,
+                'notes' => $this->notes,
+            ];
+            $this->emitUp('update',
+                $params,
+                $this->quotation->id
+            );
+            $this->inCreateMode = true;
+            $this->cleanCreateForm();
+        }
+       
     }
 
     public function render()

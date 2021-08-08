@@ -19,10 +19,10 @@ Class QuotationRepository implements QuotationRepositoryInterface {
         return Quotation::find($id);
     }
 
-    public function update($params, Quotation $quotation)
+    public function update($params, $quotationId)
     {
+        $quotation = $this->findById($quotationId);
         $quotation->update($params);
-        return $quotation;
     }
 
     public function delete(Quotation $quotation)

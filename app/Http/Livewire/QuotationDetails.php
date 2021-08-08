@@ -20,6 +20,12 @@ class QuotationDetails extends Component
         $this->emitUp('deleteQuotation', $this->quotation);
     }
 
+    public function edit()
+    {
+        $this->emit('toggleEditMode');//toggle inCreateMode prop in CreateForm
+        $this->emit('onEditModeEnter', $this->quotation);
+    }
+
     public function render()
     {
         return view('livewire.quotation-details');

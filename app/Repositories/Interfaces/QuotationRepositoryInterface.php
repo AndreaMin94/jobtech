@@ -9,7 +9,7 @@ use App\Http\Requests\QuotationRequest;
 interface QuotationRepositoryInterface {
     public function index();
     public function findById($id);
-    public function update($params, Quotation $quotation);
+    public function update($params, $quotationId);
     public function delete(Quotation $quotation);
     public function store($params);
 }
