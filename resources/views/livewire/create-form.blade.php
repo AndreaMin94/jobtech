@@ -22,5 +22,7 @@
         @enderror
     </div>
    
-    <button type="submit" class="btn btn-primary my-2">Submit</button>
+    <button type="submit" class="btn btn-primary font-weight-bold my-2">Submit</button>
+    <button wire:click.prevent="cleanCreateForm" type="submit" class="btn btn-warning font-weight-bold">Clear</button>
+
 </form>
