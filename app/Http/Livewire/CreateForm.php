@@ -30,7 +30,7 @@ class CreateForm extends Component
         'cleanCreateForm'
     ];
 
-    public function  cleanCreateForm()
+    public function cleanCreateForm()
     {
        $this->customer = '';
        $this->total = null;

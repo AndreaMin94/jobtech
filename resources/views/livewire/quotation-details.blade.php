@@ -10,10 +10,7 @@
                 Edit
             </button>
         </a>
-        <form action="{{ route('quotation.delete', $quotation) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger">Delete</button>
-        </form>
+        <button wire:click="delete" class="btn btn-danger">Delete</button>
+        
     </td>
 </tr>

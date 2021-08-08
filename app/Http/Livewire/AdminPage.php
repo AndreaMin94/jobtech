@@ -16,7 +16,7 @@ class AdminPage extends Component
    public $quotations;
 
    protected $listeners = [
-       'store', 'edit', 'update', 'delete', 'refreshAdminPage' => '$refresh'
+       'store', 'edit', 'update', 'deleteQuotation' => 'delete', 'refreshAdminPage' => '$refresh'
    ];
 
    public function __construct()
@@ -42,10 +42,11 @@ class AdminPage extends Component
     //     return $quotation;
     // }
 
-    // public function delete(Quotation $quotation)
-    // {
-    //     $quotation->delete();
-    // }
+    public function delete(Quotation $quotation)
+    {
+        $this->repository->delete($quotation);
+        $this->emit('refreshQuotationTable');
+    }
 
     public function store($params)
     {  

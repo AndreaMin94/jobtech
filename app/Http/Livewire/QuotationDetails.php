@@ -15,6 +15,11 @@ class QuotationDetails extends Component
         $this->quotation = $quotation;
     }
 
+    public function delete()
+    {
+        $this->emitUp('deleteQuotation', $this->quotation);
+    }
+
     public function render()
     {
         return view('livewire.quotation-details');
