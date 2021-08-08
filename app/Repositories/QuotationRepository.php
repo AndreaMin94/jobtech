@@ -32,10 +32,10 @@ Class QuotationRepository implements QuotationRepositoryInterface {
 
     public function store($params)
     {
-        // return Quotation::create([
-        //     'customer' => $req->input('customer'),
-        //     'total' => $req->input('total'),
-        //     'notes' => $req->input('notes')
-        // ]);
+        return Quotation::create([
+            'customer' => $params['customer'],
+            'total' => $params['total'],
+            'notes' => $params['notes']
+        ]);
     }
 }

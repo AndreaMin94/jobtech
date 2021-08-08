@@ -6,50 +6,52 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\Quotation;
 use Livewire\WithPagination;
+use App\Repositories\QuotationRepository;
+use App\Http\Controllers\QuotationController;
 use App\Repositories\Interfaces\QuotationRepositoryInterface;
 
-class AdminPage extends Component implements QuotationRepositoryInterface
+class AdminPage extends Component 
 {
    private $repository;
    public $quotations;
 
    protected $listeners = [
-       'create', 'edit', 'update', 'delete'
+       'store', 'edit', 'update', 'delete', 'refreshAdminPage' => '$refresh'
    ];
 
    public function __construct()
    {
-       $this->repository = QuotationRepositoryInterface::class;
+       $this->repository = new QuotationRepository();
    }
 
-    public function index()
-    {
-       return Quotation::orderBy('id', 'desc')->paginate(5); 
-    }
 
-    public function findById($id)
-    {
-        return Quotation::find($id);
-    }
 
-    public function update($params, Quotation $quotation)
-    {
-        $quotation->update($params);
-        return $quotation;
-    }
+    // public function index()
+    // {
+    //    return Quotation::orderBy('id', 'desc')->paginate(5); 
+    // }
 
-    public function delete(Quotation $quotation)
-    {
-        $quotation->delete();
-    }
+    // public function findById($id)
+    // {
+    //     return Quotation::find($id);
+    // }
+
+    // public function update($params, Quotation $quotation)
+    // {
+    //     $quotation->update($params);
+    //     return $quotation;
+    // }
+
+    // public function delete(Quotation $quotation)
+    // {
+    //     $quotation->delete();
+    // }
 
     public function store($params)
-    {
-        // return Quotation::create([
-        //     'customer' => $req->input('customer'),
-        //     'total' => $req->input('total'),
-        //     'notes' => $req->input('notes')
-        // ]);
+    {  
+        $this->repository->store($params);
+        $this->emit('refreshQuotationTable');
+        $this->emit('cleanCreateForm');
     }
 
     public function render()

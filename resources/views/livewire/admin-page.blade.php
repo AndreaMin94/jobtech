@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col-12">
-               <x-createform />
+             @livewire('create-form')
             </div>
         </div>
     </div>

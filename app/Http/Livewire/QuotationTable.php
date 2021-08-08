@@ -11,6 +11,10 @@ class QuotationTable extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     
+    protected $listeners = [
+        'refreshQuotationTable' => '$refresh'
+    ];
+    
     public function render()
     {
         $quotations = Quotation::orderBy('id', 'desc')->paginate(5);
