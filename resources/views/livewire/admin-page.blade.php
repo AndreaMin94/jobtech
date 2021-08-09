@@ -1,4 +1,4 @@
-<div>
+<>
     
     <div class="container my-2">
         <div class="row text-center">
@@ -36,10 +36,8 @@
         </div>
     </div>
 
-    <div class="container my-2">
-        <div class="row">
-            @livewire('quotation-table')
-        </div>
-    </div>
+    
+    @livewire('quotation-table')
+    
 
 </div>

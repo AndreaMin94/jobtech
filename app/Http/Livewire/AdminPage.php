@@ -24,6 +24,8 @@ class AdminPage extends Component
        $this->repository = new QuotationRepository();
    }
 
+
+
     // public function index()
     // {
     //    return Quotation::orderBy('id', 'desc')->paginate(5); 
@@ -37,7 +39,7 @@ class AdminPage extends Component
     public function update($params, $quotationId)
     {
         $this->repository->update($params, $quotationId);
-        $this->emit('refreshQuotationTable');
+        $this->emitSelf('refreshAdminPage');
     }
 
     public function delete(Quotation $quotation)

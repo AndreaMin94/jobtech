@@ -10,14 +10,26 @@ class QuotationTable extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+
+    public $search = '';
     
     protected $listeners = [
-        'refreshQuotationTable' => '$refresh'
+        'refreshQuotationTable' => '$refresh',
     ];
+
+    public function clearSearch()
+    {
+        $this->search = '';
+    }
+
     
     public function render()
     {
-        $quotations = Quotation::orderBy('id', 'desc')->paginate(5);
+        if($this->search == ''){
+            $quotations = Quotation::orderBy('id', 'desc')->paginate(5);
+        } else {
+            $quotations = Quotation::where('customer' , 'like', '%'.$this->search.'%')->paginate(5);
+        }
         
         return view('livewire.quotation-table', ['quotations' => $quotations]);
     }

@@ -40,6 +40,7 @@ class CreateForm extends Component
        $this->customer = '';
        $this->total = null;
        $this->notes = '';
+       $this->inCreateMode = true;
     }
 
     public function onEditModeEnter(Quotation $quotation)
