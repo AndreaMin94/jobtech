@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="exampleInputEmail1">Search By Customer Name</label>
+                <label class="text--secondary font-weight-bold">Search By Customer Name</label>
                 <input wire:model="search" type="text" class="form-control">
-                <button wire:click="clearSearch" class="btn btn-danger font-weight-bold">Clear</button>
+                <button wire:click="clearSearch" class="btn btn--primary font-weight-bold my-2">Clear</button>
               </div>
         </div>
     </div>
