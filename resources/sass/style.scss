@@ -9,7 +9,7 @@ body {
     background-color: white;
 }
 
-.text-main {
+.text--main {
     color: var(--main-color);
 }
 
@@ -63,5 +63,9 @@ body {
 }
 
 .border-top--secondary {
-    border-top: solid 1px var(--secondary-color) ;
+    border-top: solid 2px var(--secondary-color) ;
+}
+
+ul {
+    list-style-type: none;
 }

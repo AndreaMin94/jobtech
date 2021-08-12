@@ -52,44 +52,5 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card rounded">
-                <div class="card-body">
-                  <h3 class="card-title text-center font-weight-bold mb-4">Basic</h3>
-                  <h5 class="card-subtitle mb-2">Funzionalità</h5>
-                  <ul>
-                      <li>Fun 1</li>
-                      <li>Fun 2</li>
-                  </ul>
-                  <h3 class="text-center font-weight-bold">€ 29.90</h3>
-                  <a href="#" class="card-link btn btn--secondary px-3">Abbonati</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card rounded border--secondary">
-                <div class="card-body">
-                  <h3 class="card-title text-center font-weight-bold">Middle</h3>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card rounded">
-                <div class="card-body">
-                  <h3 class="card-title text-center font-weight-bold">Advanced</h3>
-                  <h6 class="card-subtitle mb-2 text-muted">Funzionalità</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

@@ -21,19 +21,19 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               @guest
               @if (Route::has('login'))
-                  <li class="nav-item">
+                  <li class="nav-item mx-2">
                       <a class="nav-link  nav--link" href="{{ route('login') }}">{{ __('Login') }}</a>
                   </li>
               @endif
 
               @if (Route::has('register'))
-                  <li class="nav-item">
+                  <li class="nav-item mx-2">
                       <a class="nav-link btn btn--secondary px-3" href="{{ route('register') }}">Registrati</a>
                   </li>
               @endif
               @else
                   @if (Auth::user() && Auth::user()->isAdmin())
-                  <li class="nav-item">
+                  <li class="nav-item mx-2">
                     <a class="nav-link btn btn--secondary px-3 font-weight-bold" href="{{ route('quotation.admin') }}">Admin</a>
                   </li>
                   @endif
