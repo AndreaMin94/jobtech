@@ -3,7 +3,7 @@
         <div class="row py-5">
             <div class="col-12 col-md-4">
                 <h2 class="h1 text--secondary font-weight-bold">QuotationManager</h2>
-                <p class="text--main text-left my-3">
+                <p class="text--main     my-3">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias obcaecati pariatur optio, animi voluptatem cum.
                 </p>
             </div>

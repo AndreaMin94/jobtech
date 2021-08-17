@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label class="text--secondary font-weight-bold">Search By Customer Name</label>
+                <label class="text--secondary font-weight-bold">Cerca preventivo tramite il nome del cliente</label>
                 <input wire:model="search" type="text" class="form-control">
-                <button wire:click="clearSearch" class="btn btn--primary font-weight-bold my-2">Clear</button>
+                <button wire:click="clearSearch" class="btn btn--primary font-weight-bold my-2">Pulisci</button>
               </div>
         </div>
     </div>
@@ -14,17 +14,22 @@
                 <thead>
                 <tr>
                     <th scope="col">n°</th>
-                    <th scope="col">Client</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Notes</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Totale</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Data di creazione</th>
+                    <th scope="col">Azioni</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($quotations as $quotation)
-                        @livewire('quotation-details', ['quotation' => $quotation], key($quotation->id))
-                    @endforeach     
+                    @if (count($quotations) > 0)
+                        @foreach ($quotations as $quotation)
+                            @livewire('quotation-details', ['quotation' => $quotation], key($quotation->id))
+                        @endforeach 
+                    @else
+                        <h1>Non ci sono quotation da mostrare</h1>
+                    @endif
+                       
                 </tbody>
             </table>
             {{ $quotations->links() }}

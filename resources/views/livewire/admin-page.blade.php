@@ -4,7 +4,7 @@
         <div class="row text-center">
             <div class="col-12">
                 <h1 class="text-accent font-weight-bold">
-                    Manage Quotations 
+                    Gestisci i preventivi
                 </h1>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="row text-left">
             <div class="col-12">
                 <h2 class="my-2 text-accent font-weight-bold">
-                    Create new quotation
+                    Crea un nuovo preventivo
                 </h2>
             </div>
         </div>

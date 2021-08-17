@@ -10,10 +10,7 @@
       <div class="collapse navbar-collapse py-1" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link nav--link" href="#">Chi siamo <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link nav--link" href="#">I nostri piani <span class="sr-only">(current)</span></a>
+            <a class="nav-link nav--link" href="{{ route('aboutUs') }}">Chi siamo <span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">

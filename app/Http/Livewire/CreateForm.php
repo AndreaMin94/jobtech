@@ -22,13 +22,13 @@ class CreateForm extends Component
     ];
 
     protected $messages = [
-        'customer.required' => "The customer name is required",
-        'customer.min' => "The customer name must be longer than 3 characters",
-        'total.required' => "The amount is required",
-        'total.min' => "The amount must be greater than 1",
-        'total.numeric' => 'The amount must be numeric',
-        'notes.required' => 'Notes are required',
-        'notes.min' => "Notes must be longer than 10 characters"   
+        'customer.required' => "Il nome del cliente è obbligatorio",
+        'customer.min' => "Il nome del cliente deve essere lungo almeno 3 caratteri",
+        'total.required' => "Il totale è obbligatorio",
+        'total.min' => "Il totale deve essere maggiore di €1.00",
+        'total.numeric' => 'Il totale deve essere un valore numerico',
+        'notes.required' => 'Le note del preventivo sono obbligatorie',
+        'notes.min' => "Le note devono essere lunghe almeno 3 caratteri"   
     ];
 
     protected $listeners = [

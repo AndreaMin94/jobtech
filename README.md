@@ -1,62 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+BENVENUTI IN QUOTATION MANAGER
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Linee guida per l'installazione del progetto
 
-## About Laravel
+1. scaricare il progetto da GitHub al link https://github.com/AndreaMin94/jobtech
+2. Una volta scaricato il progetto, entriamo nella cartella tramite il comando cd jobtech
+3. Lanciare il comando cp .env.example .env . Questo comando copierà il contenuto del file .env.example in un nuovo file chiamato .env . Questo file contiene le configurazioni principali del progetto tra cui la configurazione del database. 
+4. Dopo aver creato il file .env , lanciamo dalla console il comando composer install. Questo comando serve ad installare tutte le dipendenze PHP che servono al progetto per essere lanciato
+5. Lanciamo il comando php artisan key:generate che creerà una chiave per la nostra applicazione
+6. Passiamo adesso a compilare gli asset che servono per le librerie di frontend utilizzate nel progetto tramite il comando npm install && npm run dev che installerà le dipendenze CSS e JS e le compilerà
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+7. Prima di avviare il progetto bisogna creare il database MySQL. Creiamo il database di nome laravel ( il nome standard che troviamo nella configurazione ) e procediamo alla compilazione del file .env con la configurazione della connessione al db:
+    
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=your_mysql_username
+DB_PASSWORD=your_mysql_password
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+8. Dopo aver configurato il file .env, passiamo alla creazione dei dati per inizializzare il progetto.
+Lanciamo quindi il comando php artisan migrate --seed . Questo comando creerà le tabelle nel database collegato al progetto, 10 Quotation fake e un utente con privilegi admin che potrà accedere alla sezione amministrativa del sito. Le credenziali dell'utente admin sono:
+email: admin@admin.com
+pwd : 12345678
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+9. Per poter far partire il sito, lanciamo il comando php artisan serve che aprirà un server all'indirizzo http://127.0.0.1:8000
 
-## Learning Laravel
+10. Apriamo un qualsiasi browser e digitiamo l'indirizzo http://127.0.0.1:8000
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Linee guida per l'utilizzo del sito
 
-## Laravel Sponsors
+Nella Home page troviamo una semplice landing page con Navbar, sezioni informative e footer con contatti e mappa. 
+Nella navbar troviamo il link "Chi Siamo" che porta ad una pagina con una breve descrizione dell'azienda e le due action Login e Register. 
+Facendo il login con le credenziali dell'account amministratore possiamo accedere alla sezione amministrativa tramite la call to action "Admin" presente nella Navbar.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Linee guida per la sezione admin
 
-### Premium Partners
+Il primo componente che vediamo nella sezione admin è un form per inserire una nuova Quotation.
+I 3 campi richiesti sono Nome del cliente, Totale e Note per il preventivo. I 3 campi sono obbligatori. Il nome del cliente deve essere lungo almeno 3 caratteri. Il totale deve essere maggiore di €1.00. Le note devono essere lunghe almeno 3 caratteri. Qualora queste regole non fossero rispettate, il form mostrerebbe l'errore e non procederebbe alla creazione della Quotation. Sotto il form sono posizionati due bottoni: Crea e Pulisci. Con il primo lanciamo il comando per creare una nuova Quotation, il secondo serve a ripulire gli input. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+Il secondo componente è una tabella che mostra le Quotation presenti nel database dal più recente al più vecchio impaginati per 5 alla volta. Proprio sopra la tabella si trova un input che permette di cercare una Quotation in base al nome del cliente. Sotto l'input troviamo un bottono con la scritta pulisci che cancella ciò che abbiamo scritto nell'input di ricerca. 
+Per ogni Quotation all'interno della tabella troviamo due call to action: Modifca ed Elimina. Cliccando sul bottone Elimina, la Quotation verrà eliminata e la tabella si aggiornerà con tutte le Quotation rimaste. Cliccando sul bottone Modifica, il form in alto verrà popolato con le informazioni della Quotation che abbiamo scelto e saremo in grado di rieditare e di modificare la Quotation. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+STRUTTURA
+ 
+La struttura del progetto è semplice.
+A livello logico c'è un solo modello: Quotation. 
+Quotation ha solo 3 attributi: customer, total e notes. Le sue istanze sono salvate dalla tabella quotations nel database MySQL. 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Le azioni possibili su questo modello: Create, Read, Delete e Update, sono gestite da una classe repository QuotationRepository che implementa un'interfaccia QuotationRepositoryInterface.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+La pagina Admin è gestita tramite il framework Livewire che permette di poter creare SPA tramite chiamate AJAX implicite.

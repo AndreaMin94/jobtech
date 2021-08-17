@@ -30,7 +30,6 @@ class QuotationTable extends Component
         } else {
             $quotations = Quotation::where('customer' , 'like', '%'.$this->search.'%')->paginate(5);
         }
-        
         return view('livewire.quotation-table', ['quotations' => $quotations]);
     }
 }
